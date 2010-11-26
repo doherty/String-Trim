@@ -1,0 +1,78 @@
+NAME
+    String::Trim - trim whitespace from your strings
+
+VERSION
+    version 0.001
+
+SYNOPSIS
+        use String::Trim;
+
+        print "Do it? ";
+        trim(my $response = <>);
+        print "'$response'\n";
+
+DESCRIPTION
+    "String::Trim" trims whitespace off your strings. chomp trims only $/
+    (typically, that's newline), but "trim" will trim all leading and
+    trailing whitespace.
+
+FUNCTIONS
+  trim
+    Returns the string with all leading and trailing whitespace removed.
+    Trimming undef gives you undef. Alternatively, you can trim in-place.
+
+        my $var     = ' my string  ';
+        my $trimmed = trim($var);
+        # OR
+        trim($var);
+
+    "trim" also knows how to trim an array or arrayref:
+
+        my @to_trim = (' one ', ' two ', ' three ');
+        my @trimmed = trim(@to_trim);
+        # OR
+        trim(@to_trim);
+        # OR
+        my $trimmed = trim(\@to_trim);
+        # OR
+        trim(\@to_trim);
+
+RATIONALE
+    "trim" is often used by beginners, who may not understand how to spin
+    their own. While String::Util does have a "trim" function, it depends on
+    Debug::ShowStuff, which depends on Taint, which fails the test suite,
+    and doesn't appear to be maintained. This module installs, is actively
+    maintained, and has no non-core dependencies.
+
+AVAILABILITY
+    The latest version of this module is available from the Comprehensive
+    Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a
+    CPAN site near you, or see <http://search.cpan.org/dist/String-Trim/>.
+
+    The development version lives at
+    <http://github.com/doherty/String-Trim.git> and may be cloned from
+    <git://github.com/doherty/String-Trim.git>. Instead of sending patches,
+    please fork this project using the standard git and github
+    infrastructure.
+
+BUGS AND LIMITATIONS
+    No bugs have been reported.
+
+    Please report any bugs or feature requests through the web interface at
+    <http://github.com/doherty/String-Trim/issues>.
+
+CREDITS
+    This module was inspired by code at
+    <http://www.perlmonks.org/?node_id=36684> written by japhy (Jeff
+    Pinyan), dragonchild, and Aristotle.
+
+AUTHOR
+    Mike Doherty <doherty@cpan.org>
+
+COPYRIGHT AND LICENSE
+    This software is Copyright (c) 2010 by Mike Doherty.
+
+    This is free software, licensed under:
+
+      The GNU General Public License, Version 3, June 2007
+
