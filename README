@@ -64,10 +64,17 @@ BUGS AND LIMITATIONS
 CREDITS
     This module was inspired by code at
     <http://www.perlmonks.org/?node_id=36684> written by japhy (Jeff
-    Pinyan), dragonchild, and Aristotle.
+    Pinyan), dragonchild, and Aristotle. This Perl module was written by
+    Mike Doherty.
 
-AUTHOR
-    Mike Doherty <doherty@cpan.org>
+AUTHORS
+    *   Mike Doherty <doherty@cpan.org>
+
+    *   Jeff Pinyan <pinyan@cpan.org>
+
+    *   Rob Kinyon <rkinyon@cpan.org>
+
+    *   Αριστοτέλης Παγκαλτζής (Aristotle Pagaltzis) <aristotle@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is Copyright (c) 2010 by Mike Doherty.

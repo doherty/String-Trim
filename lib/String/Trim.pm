@@ -80,7 +80,8 @@ This module installs, is actively maintained, and has no non-core dependencies.
 =head1 CREDITS
 
 This module was inspired by code at L<http://www.perlmonks.org/?node_id=36684> written
-by japhy (Jeff Pinyan), dragonchild, and Aristotle.
+by japhy (Jeff Pinyan), dragonchild, and Aristotle. This Perl module was written by Mike
+Doherty.
 
 =cut
 
