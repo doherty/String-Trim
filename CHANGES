@@ -1,6 +1,6 @@
 Revision history for Perl module String-Trim
 
 {{$NEXT}}
-
+    * Use Perl_5 license: GPL+Artistic
 0.001     2010-11-26
     *
