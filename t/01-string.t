@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use Test::More 0.94 tests => 2;
+use Test::Builder 0.94 qw();
 use String::Trim;
 
 my $strings = {

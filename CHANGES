@@ -1,7 +1,7 @@
 Revision history for Perl module String-Trim
 
 {{$NEXT}}
-
+    * Require Test::Buider 0.94 along with Test::More 0.94
 0.002     2010-11-28
     * Use Perl_5 license: GPL+Artistic
 0.001     2010-11-26
