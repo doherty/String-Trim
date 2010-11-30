@@ -44,6 +44,10 @@ RATIONALE
     and doesn't appear to be maintained. This module installs, is actively
     maintained, and has no non-core dependencies.
 
+    Other options include Text::Trim and String::Strip (which is implemented
+    in XS, and is therefore likely to be very fast, but requires a C
+    compiler).
+
 AVAILABILITY
     The latest version of this module is available from the Comprehensive
     Perl Archive Network (CPAN). Visit <http://www.perl.com/CPAN/> to find a

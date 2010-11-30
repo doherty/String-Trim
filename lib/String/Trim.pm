@@ -77,6 +77,9 @@ L<String::Util> does have a C<trim> function, it depends on L<Debug::ShowStuff>,
 depends on L<Taint>, which fails the test suite, and doesn't appear to be maintained.
 This module installs, is actively maintained, and has no non-core dependencies.
 
+Other options include L<Text::Trim> and L<String::Strip> (which is implemented in XS,
+and is therefore likely to be very fast, but requires a C compiler).
+
 =head1 CREDITS
 
 This module was inspired by code at L<http://www.perlmonks.org/?node_id=36684> written
