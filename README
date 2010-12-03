@@ -2,7 +2,7 @@ NAME
     String::Trim - trim whitespace from your strings
 
 VERSION
-    version 0.003
+    version 0.004
 
 SYNOPSIS
         use String::Trim;
