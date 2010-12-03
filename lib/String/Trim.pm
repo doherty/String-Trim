@@ -19,7 +19,7 @@ that's newline), but C<trim> will trim all leading and trailing whitespace.
 
 =cut
 
-use Exporter qw(import);
+use Exporter 5.57 qw(import);
 our @EXPORT = qw(trim trim2);
 
 =head1 FUNCTIONS
