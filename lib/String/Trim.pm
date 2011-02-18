@@ -1,8 +1,8 @@
-use strict;
-use warnings;
-
 package String::Trim;
 # ABSTRACT: trim whitespace from your strings
+use strict;
+use warnings;
+# VERSION
 
 =head1 SYNOPSIS
 
