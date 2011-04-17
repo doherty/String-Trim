@@ -1,18 +1,29 @@
 use strict;
 use warnings;
-use Test::More tests => 1;
+use Test::More 0.88;
 use String::Trim;
 
 my $trimmed;
-while (<DATA>) {
+my $untrimmed;
+my $tests = 0;
+while(<DATA>) {
+    $untrimmed .= $_;
     trim;
     $trimmed .= $_;
+    unlike($_, qr{^\s|\s$}, "trimmed line $tests OK");
+    $tests++;
 }
-is($trimmed, 'onetwothreefour', 'Trims $_ OK');
+isnt($trimmed, $untrimmed, 'trim has some effect');
+$tests++;
+is($trimmed, 'onetwothreefour', 'trims $_ ok');
+$tests++;
+
+done_testing($tests);
+
 
 __DATA__
  one
- two 
+two   
 
-three  
-  four 
+three 
+ four

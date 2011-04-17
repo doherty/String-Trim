@@ -47,25 +47,50 @@ C<trim> also knows how to trim an array or arrayref:
 
 =cut
 
-sub trim { # Startin point: http://www.perlmonks.org/?node_id=36684
+sub trim { # Starting point: http://www.perlmonks.org/?node_id=36684
+    my $t = qr{^\s+|\s+$};
     if (defined wantarray) {
         @_ = (@_ ? @_ : $_);
         if (ref $_[0] eq 'ARRAY') {
             @_ = @{ $_[0] };
-            for (@_) { s{^\s+|\s+$}{}g if defined $_ }
+            for (@_) { s{$t}{}g if defined $_ }
             return \@_;
         }
+        elsif (ref $_[0] eq 'HASH') {
+            foreach my $k (keys %{ $_[0] }) {
+                (my $nk = $k) =~ s{$t}{}g;
+                if (defined $_[0]->{$k}) {
+                    ($_[0]->{$nk} = $_[0]->{$k}) =~ s{$t}{}g;
+                }
+                else {
+                    $_[0]->{$nk} = undef;
+                }
+                delete $_[0]->{$k} unless $k eq $nk;
+            }
+        }
         else {
-            for (@_ ? @_ : $_) { s{^\s+|\s+$}{}g if defined $_ }
+            for (@_ ? @_ : $_) { s{$t}{}g if defined $_ }
         }
         return wantarray ? @_ : $_[0];
     }
     else {
         if (ref $_[0] eq 'ARRAY') {
-            for (@{ $_[0] }) { s{^\s+|\s+$}{}g if defined $_ }
+            for (@{ $_[0] }) { s{$t}{}g if defined $_ }
+        }
+        elsif (ref $_[0] eq 'HASH') {
+            foreach my $k (keys %{ $_[0] }) {
+                (my $nk = $k) =~ s{$t}{}g;
+                if (defined $_[0]->{$k}) {
+                    ($_[0]->{$nk} = $_[0]->{$k}) =~ s{$t}{}g;
+                }
+                else {
+                    $_[0]->{$nk} = undef;
+                }
+                delete $_[0]->{$k} unless $k eq $nk
+            }
         }
         else {
-            for (@_ ? @_ : $_) { s{^\s+|\s+$}{}g if defined $_ }
+            for (@_ ? @_ : $_) { s{$t}{}g if defined $_ }
         }
     }
 }
