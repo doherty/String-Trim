@@ -1,6 +1,8 @@
 Revision history for Perl module String-Trim
 
 {{$NEXT}}
+
+0.005     2011-04-21
     * Added tests
 
 0.004     2010-12-03
