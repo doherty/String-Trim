@@ -48,19 +48,26 @@ C<trim> also knows how to trim an array or arrayref:
 =cut
 
 sub trim { # Starting point: http://www.perlmonks.org/?node_id=36684
-    my $t = qr{^\s+|\s+$};
+    my $t1 = qr{\A\s+};
+    my $t2 = qr{\s+\z};
+
     if (defined wantarray) {
         @_ = (@_ ? @_ : $_);
         if (ref $_[0] eq 'ARRAY') {
             @_ = @{ $_[0] };
-            for (@_) { s{$t}{}g if defined $_ }
+            for (@_) { if (defined $_) { s/$t1//; s/$t2//; } }
             return \@_;
         }
         elsif (ref $_[0] eq 'HASH') {
             foreach my $k (keys %{ $_[0] }) {
-                (my $nk = $k) =~ s{$t}{}g;
+                my $nk = $k;
+                $nk =~ s/$t1//;
+                $nk =~ s/$t2//;
+
                 if (defined $_[0]->{$k}) {
-                    ($_[0]->{$nk} = $_[0]->{$k}) =~ s{$t}{}g;
+                    $_[0]->{$nk} = $_[0]->{$k};
+                    $_[0]->{$nk} =~ s/$t1//;
+                    $_[0]->{$nk} =~ s/$t2//;
                 }
                 else {
                     $_[0]->{$nk} = undef;
@@ -69,19 +76,24 @@ sub trim { # Starting point: http://www.perlmonks.org/?node_id=36684
             }
         }
         else {
-            for (@_ ? @_ : $_) { s{$t}{}g if defined $_ }
+            for (@_ ? @_ : $_) { if (defined $_) { s/$t1//; s/$t2// } }
         }
         return wantarray ? @_ : $_[0];
     }
     else {
         if (ref $_[0] eq 'ARRAY') {
-            for (@{ $_[0] }) { s{$t}{}g if defined $_ }
+            for (@{ $_[0] }) { if (defined $_) { s/$t1//; s/$t2// } }
         }
         elsif (ref $_[0] eq 'HASH') {
             foreach my $k (keys %{ $_[0] }) {
-                (my $nk = $k) =~ s{$t}{}g;
+                my $nk = $k;
+                $nk =~ s/$t1//;
+                $nk =~ s/$t2//;
+
                 if (defined $_[0]->{$k}) {
-                    ($_[0]->{$nk} = $_[0]->{$k}) =~ s{$t}{}g;
+                    $_[0]->{$nk} = $_[0]->{$k};
+                    $_[0]->{$nk} =~ s/$t1//;
+                    $_[0]->{$nk} =~ s/$t2//;
                 }
                 else {
                     $_[0]->{$nk} = undef;
@@ -90,7 +102,7 @@ sub trim { # Starting point: http://www.perlmonks.org/?node_id=36684
             }
         }
         else {
-            for (@_ ? @_ : $_) { s{$t}{}g if defined $_ }
+            for (@_ ? @_ : $_) { if (defined $_) { s/$t1//; s/$t2// } }
         }
     }
 }

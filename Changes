@@ -1,6 +1,7 @@
 Revision history for Perl module String-Trim
 
 {{$NEXT}}
+    * Faster regexes, courtesy of Randy Stauner
 
 0.005     2011-04-21
     * Added tests
