@@ -17,12 +17,13 @@ my $strings = {
 };
 
 subtest 'return' => sub {
-    plan tests => scalar keys %$strings;
+    plan tests => 2 * scalar keys %$strings;
     foreach my $key (keys %$strings) {
         my $to_trim = $key;
         my $ought   = $strings->{$key};
         my $trimmed = trim($to_trim);
         is($trimmed, $ought, "trim($key) returned '$ought' OK");
+        is($to_trim, $key,   "var not modified");
     }
 };
 
