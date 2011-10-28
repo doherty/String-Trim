@@ -16,13 +16,15 @@ my $tests = {
 };
 
 subtest 'return' => sub {
-    plan tests => scalar keys %$tests;
+    plan tests => 3 * scalar keys %$tests;
     foreach my $key (keys %$tests) {
         my @to_trim = @{ $tests->{$key}->{before} };
         my @ought   = @{ $tests->{$key}->{after} };
         
         my @trimmed = trim(@to_trim);
         is_deeply(\@trimmed, \@ought, 'trim(@array) returns a trimmed array OK');
+        is_deeply(\@to_trim, $tests->{$key}->{before}, 'array not modified');
+        ok( scalar (grep { defined && m/(^\s|\s$)/ } @to_trim), 'original array still has some whitespace');
     }
 };
 
